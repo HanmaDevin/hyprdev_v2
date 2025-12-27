@@ -1,0 +1,165 @@
+{
+  "include": [
+    "~/.config/waybar/modules/custom-modules.jsonc",
+  ],
+  "clock": {
+    "format": "{:L%a %d. | %I:%M %p}",
+    "format-alt": "{:L%d %A %B W%V %Y}",
+    "tooltip": false,
+  },
+  "backlight": {
+    "format": "{icon} {percent}%",
+    "tooltip": false,
+    "format-icons": [
+      "󰃚",
+      "󰃛",
+      "󰃜",
+      "󰃝",
+      "󰃞",
+      "󰃟",
+      "󰃠"
+    ],
+  },
+  "hyprland/workspaces": {
+    "disable-scroll": true,
+    "all-outputs": true,
+    "on-click": "activate",
+    "format": " {icon} ",
+    "format-icons": {
+      "1": "",
+      "2": "",
+      "3": "",
+      "4": "󰉋",
+      "5": "󰓓",
+      "6": "6",
+      "7": "7",
+      "8": "8",
+      "9": "9",
+      "10": "10",
+    },
+    "persistent-workspaces": {
+      "1": [],
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": [],
+    },
+  },
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-muted": "",
+    "format-source": " {volume}%",
+    "format-source-muted": "  Mute",
+    "format-icons": {
+      "headphone": "",
+      "headset": "d",
+      "default": [
+        "",
+        "",
+        " "
+      ],
+    },
+    "tooltip-format": "Playing at {volume}%",
+    "on-click-right": "pamixer -t",
+    "on-click": "hyprdev-show-audio",
+  },
+  "network": {
+    "format-icons": [
+      "󰤯",
+      "󰤟",
+      "󰤢",
+      "󰤥",
+      "󰤨"
+    ],
+    "format": "{icon}",
+    "format-wifi": "{icon}",
+    "format-ethernet": "󰀂",
+    "format-disconnected": "󰤮",
+    "tooltip-format-wifi": "{essid} ({frequency} GHz)\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+    "tooltip-format-ethernet": "⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+    "tooltip-format-disconnected": "Disconnected",
+    "interval": 3,
+    "spacing": 1,
+    "on-click": "hyprdev-show-network",
+  },
+  "battery": {
+    "format": "{icon} {capacity}%",
+    "format-charging": "{icon} {capacity}%",
+    "format-icons": {
+      "charging": [
+        "󰢜",
+        "󰂆",
+        "󰂇",
+        "󰂈",
+        "󰢝",
+        "󰂉",
+        "󰢞",
+        "󰂊",
+        "󰂋",
+        "󰂅"
+      ],
+      "default": [
+        "󰁺",
+        "󰁻",
+        "󰁼",
+        "󰁽",
+        "󰁾",
+        "󰁿",
+        "󰂀",
+        "󰂁",
+        "󰂂",
+        "󰁹"
+      ],
+    },
+    "tooltip-format-discharging": "{power:>1.0f}W↓ {capacity}%",
+    "tooltip-format-charging": "{power:>1.0f}W↑ {capacity}%",
+    "format-plugged": " {capacity}%",
+    "format-time": "{H} h {m} min",
+    "states": {
+      "critical": 15,
+      "good": 95,
+      "warning": 30,
+    },
+    "interval": 5,
+    "tooltip": false,
+  },
+  "mpris": {
+    "format": "{player_icon} {dynamic}",
+    "format-paused": "{status_icon} <i>{dynamic}</i>",
+    "dynamic-len": 30,
+    "dynamic-importance-order": [
+      "album",
+      "position",
+      "length"
+    ],
+    "title-len": 15,
+    "album-len": 15,
+    "player-icons": {
+      "default": "",
+      "mpv": "",
+      "chromium": "",
+      "spotify": "󰓇",
+    },
+    "status-icons": {
+      "paused": "",
+    },
+    // "ignored-players": ["firefox"]
+  },
+  "hyprland/language": {
+    "format": "{}",
+    "format-de": "de",
+    "format-en": "us",
+  },
+  "group/tray-expander": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 600,
+      "children-class": "tray-group-item",
+    },
+    "modules": [
+      "custom/expand-icon",
+      "hyprland/language",
+      "tray"
+    ],
+  },
+}

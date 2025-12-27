@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+warning="$HOME/.battery-warning"
+BAT=$(fd . /sys/class/power_supply | rg -o BAT.)
+
+if [ -z "$BAT" ]; then
+  exit 1
+fi
+
+while true; do
+  capacity="$(cat /sys/class/power_supply/"$BAT"/capacity)"
+  BATSTATUS="$(cat /sys/class/power_supply/"$BAT"/status)"
+
+  if [ "$BATSTATUS" == "Discharging" ]; then
+    if [ "$capacity" -le 10 ]; then
+      if [ ! -f "$warning" ]; then
+        notify-send "Charging Time!" "Battery is at ${capacity}%"
+        touch "$warning"
+      fi
+    else
+      rm "$warning"
+    fi
+  fi
+done

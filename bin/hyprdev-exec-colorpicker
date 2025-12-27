@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+color=$(hyprpicker -a -f hex)
+if [[ -z "$color" ]]; then
+  exit 1
+fi
+notify-send -a 'Hyprpicker' '🎨 Color copied!' "$color"

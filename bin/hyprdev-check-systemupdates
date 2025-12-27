@@ -1,0 +1,12 @@
+#!/bin/bash
+
+icon="󰚰"
+updates=$(checkupdates | wc -l)
+aur=$(yay -Qu | wc -l)
+total=$((updates + aur))
+
+if [[ "$total" -gt 10 ]]; then
+  printf "{ \"text\": \"%s\", \"tooltip\": \"Total updates: %s\" }" "$icon" "$total"
+else
+  printf "{ \"text\": \"\", \"tooltip\": \"\" }"
+fi

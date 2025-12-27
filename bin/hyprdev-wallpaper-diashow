@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+#  _       __      ____
+# | |     / /___ _/ / /___  ____ _____  ___  _____
+# | | /| / / __ `/ / / __ \/ __ `/ __ \/ _ \/ ___/
+# | |/ |/ / /_/ / / / /_/ / /_/ / /_/ /  __/ /
+# |__/|__/\__,_/_/_/ .___/\__,_/ .___/\___/_/
+#                 /_/         /_/
+
+WALLPAPER_DIR="$HOME/Pictures/Wallpaper"
+if [ "$1" == "--toggle" ]; then
+  if [ -f ~/.diashow-running ]; then
+    notify-send "Hyprdev" "Diashow off"
+    rm ~/.diashow-running
+    kill -9 $(pgrep -f "hyprdev-wallpaper-diashow --toggle")
+  else
+    touch ~/.diashow-running
+    notify-send "Hyprdev" "Diashow on"
+  fi
+fi
+
+# Slideshow behavior
+while true; do
+  CURRENT_WALL=$(swww query | sed 's/.*image: //')
+
+  # Get a random wallpaper that is not the current one
+  WALLPAPER=$(find "$WALLPAPER_DIR" -type f ! -name "$(basename "$CURRENT_WALL")" | shuf -n 1)
+
+  # Apply the selected wallpaper
+  swww img "$WALLPAPER" --transition-type wipe
+
+  # For hyprlock to have the same Background
+  cp "$WALLPAPER" ~/.current_wallpaper
+  sleep 600
+done

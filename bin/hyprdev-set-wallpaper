@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+if [ -z "$1" ]; then
+    if [ ! -f ~/.current_wallpaper ]; then
+        wallpaper=$(fd . "$HOME/Pictures/Wallpaper/" | shuf -n 1)
+        matugen image  "$wallpaper"
+        cp "$wallpaper" ~/.current_wallpaper
+        exit 1
+    fi
+    exit 1
+fi
+
+if [ ! -f "$1" ]; then
+    notify-send "Hyprdev Wallpaper" "$1 not a file"
+    exit 1
+fi
+
+base=$(basename "$1")
+
+if [[ ! "$base" =~ .*?\.(jpg|png|jpeg) ]]; then
+    notify-send "Hyprdev Wallpaper" "Invalid format"
+    exit 1
+fi
+
+if [ -f ~/.diashow-running ]; then
+    notify-send "Diashow running, toggle it off" "Super + Alt + Space"
+    exit 1
+fi
+
+matugen image "$1"
+cp "$1" ~/.current_wallpaper

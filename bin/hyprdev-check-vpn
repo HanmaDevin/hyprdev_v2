@@ -1,0 +1,35 @@
+#! /usr/bin/env bash
+
+text=""
+tooltip=""
+
+wireguard=$(ifconfig | rg "wg0")
+proton=$(nmcli c | rg "Proton" | awk -F' ' '{printf "%s %s", $1, $2}')
+openvpn=$(ifconfig | rg "tun0")
+
+if command -v nordvpn >/dev/null 2>&1; then
+  nordstatus=$(nordvpn status | grep Status | awk -F ": " '{ print $2 }')
+fi
+
+if command -v tailscale >/dev/null 2>&1; then
+  tailscale=$(tailscale status)
+fi
+
+if [[ ! -z "$proton" ]]; then
+  text="󰌆"
+  tooltip="$proton"
+elif [[ ! -z "$nordstatus" && "$nordstatus" == "Connected" ]]; then
+  city=$(nordvpn status | grep City | awk -F ": " '{ print $2 }')
+  text="󰌆"
+  tooltip="NordVPN\r$city"
+elif [[ ! -z "$wireguard" || ! -z "$openvpn" ]]; then
+  text="󰌆"
+elif [[ ! -z "$tailscale" && ! "$tailscale" =~ "stopped" ]]; then
+  text="󰌆"
+  tooltip+="Tailsscale connected\n"
+  tooltip+="IP: $(tailscale ip --4)"
+else
+  text=""
+fi
+
+printf "{ \"text\": \"%s\", \"tooltip\": \"%s\" }" "$text" "$tooltip"
