@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #     ____           __        ____   _____           _       __
 #    /  _/___  _____/ /_____ _/ / /  / ___/__________(_)___  / /_
 #    / // __ \/ ___/ __/ __ `/ / /   \__ \/ ___/ ___/ / __ \/ __/
@@ -13,7 +13,7 @@ CFG_PATH="$REPO/.config"
 installPackages() {
   sudo pacman -Syu
 
-  local packages=("gum" "network-manager-applet" "ttf-ubuntu-nerd" "ttf-firacode-nerd" "ttf-fira-sans" "swayosd" "networkmanager-openvpn" "zip" "unzip" "gunzip" "man" "libreoffice" "sddm" "mpv-mpris" "fastfetch" "hyprland" "glow" "swww" "grub" "os-prober" "hyprlock" "kitty" "hyprpicker" "ntfs-3g" "tree" "lazygit" "ufw" "zsh" "unzip" "wget" "polkit-kde-agent" "neovim" "eza" "btop" "gamemode" "steam" "zoxide" "fzf" "bat" "jdk21-openjdk" "docker" "ripgrep" "fd" "starship" "okular" "cliphist" "hypridle" "rustup" "rust-analyzer" "bluez" "bluez-utils" "networkmanager" "brightnessctl" "wine" "bluez-obex" "python-pip" "python-requests" "python-pipx" "kvantum" "kvantum-qt5" "papirus-folders" "papirus-icon-theme" "matugen" "openssh" "pam-u2f" "pipewire" "swaync" "pipewire-pulse" "pipewire-alsa" "pipewire-jack" "pamixer" "ttf-font-awesome" "ttf-nerd-fonts-symbols" "ttf-jetbrains-mono-nerd" "noto-fonts-emoji" "wireplumber" "libfido2" "qt5-wayland" "qt6-wayland" "calc" "gnome-keyring" "piper" "xdg-desktop-portal-gtk" "xdg-desktop-portal-hyprland" "xdg-desktop-portal-wlr" "gdb" "qt5-quickcontrols" "dolphin" "qt5-quickcontrols2" "qt5-graphicaleffects" "wiremix" "pacman-contrib" "rofi" "libimobiledevice" "usbmuxd" "gvfs-gphoto2" "ifuse" "python-dotenv" "openvpn" "ncdu" "texlive" "grim" "slurp" "satty" "inetutils" "net-tools" "wl-clipboard" "jq" "nodejs" "npm" "nm-connection-editor" "hyprsunset" "github-cli" "waybar" "proton-vpn-gtk-app" "systemd-resolved" "wireguard-tools" "linux-headers" "ffmpeg4.4")
+  local packages=("gum" "network-manager-applet" "ttf-ubuntu-nerd" "ttf-firacode-nerd" "ttf-fira-sans" "swayosd" "networkmanager-openvpn" "zip" "unzip" "gunzip" "man" "libreoffice" "sddm" "mpv-mpris" "fastfetch" "hyprland" "glow" "swww" "grub" "os-prober" "hyprlock" "kitty" "hyprpicker" "ntfs-3g" "tree" "lazygit" "ufw" "zsh" "unzip" "wget" "polkit-gnome-agent" "neovim" "eza" "btop" "gamemode" "steam" "zoxide" "fzf" "bat" "jdk21-openjdk" "docker" "ripgrep" "fd" "starship" "okular" "cliphist" "hypridle" "rustup" "rust-analyzer" "bluez" "bluez-utils" "networkmanager" "brightnessctl" "wine" "bluez-obex" "python-pip" "python-requests" "python-pipx" "kvantum" "kvantum-qt5" "papirus-folders" "papirus-icon-theme" "matugen" "openssh" "pam-u2f" "pipewire" "swaync" "pipewire-pulse" "pipewire-alsa" "pipewire-jack" "pamixer" "ttf-font-awesome" "ttf-nerd-fonts-symbols" "ttf-jetbrains-mono-nerd" "noto-fonts-emoji" "wireplumber" "libfido2" "qt5-wayland" "qt6-wayland" "calc" "gnome-keyring" "piper" "xdg-desktop-portal-gtk" "xdg-desktop-portal-hyprland" "xdg-desktop-portal-wlr" "gdb" "qt5-quickcontrols" "qt5-quickcontrols2" "qt5-graphicaleffects" "wiremix" "pacman-contrib" "rofi" "libimobiledevice" "usbmuxd" "gvfs-gphoto2" "ifuse" "python-dotenv" "openvpn" "ncdu" "texlive" "grim" "slurp" "satty" "inetutils" "net-tools" "wl-clipboard" "jq" "nodejs" "npm" "nm-connection-editor" "hyprsunset" "github-cli" "waybar" "proton-vpn-gtk-app" "systemd-resolved" "wireguard-tools" "linux-headers" "ffmpeg4.4")
 
   for pkg in "${packages[@]}"; do
     sudo pacman -S --noconfirm "$pkg"
@@ -21,6 +21,7 @@ installPackages() {
 
   sudo pacman -S --noconfirm gnome
   sudo pacman -Rns --noconfirm gnome
+  sudo pacman -S --noconfirm nautilus
 
   rustup default stable
 
@@ -211,12 +212,12 @@ sudo systemctl enable swayosd-libinput-backend
 
 echo -e "${MAGENTA}"
 cat <<"EOF"
-    ____       __                __  _                                   
+    ____       __                __  _
    / __ \___  / /_  ____  ____  / /_(_)___  ____ _   ____  ____ _      __
   / /_/ / _ \/ __ \/ __ \/ __ \/ __/ / __ \/ __ `/  / __ \/ __ \ | /| / /
- / _, _/  __/ /_/ / /_/ / /_/ / /_/ / / / / /_/ /  / / / / /_/ / |/ |/ / 
-/_/ |_|\___/_.___/\____/\____/\__/_/_/ /_/\__, /  /_/ /_/\____/|__/|__/  
-                                         /____/                         
+ / _, _/  __/ /_/ / /_/ / /_/ / /_/ / / / / /_/ /  / / / / /_/ / |/ |/ /
+/_/ |_|\___/_.___/\____/\____/\__/_/_/ /_/\__, /  /_/ /_/\____/|__/|__/
+                                         /____/
 EOF
 echo "and thank you for choosing my config :)"
 echo -e "${NONE}"
