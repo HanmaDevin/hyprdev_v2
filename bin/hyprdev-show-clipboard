@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-hyprdev-launch-walker --minwidth 1 --maxwidth 500 -m clipboard 

@@ -6,17 +6,11 @@
   "layer": "top",
   "reload_style_on_change": true,
   "margin-top": 13,
-  "modules-left": [
-    "custom/launcher",
-    "clock"
-  ],
-  "modules-center": [
-    "custom/screenrecording-indicator",
-    "hyprland/workspaces",
-  ],
+  "modules-left": ["custom/launcher", "clock"],
+  "modules-center": ["custom/screenrecording-indicator", "hyprland/workspaces"],
   "modules-right": [
-    "group/tray-expander",
     "custom/updates",
+    "group/tray-expander",
     "custom/weather",
     "custom/vpn",
     "bluetooth",
