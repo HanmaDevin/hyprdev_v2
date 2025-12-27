@@ -1,7 +1,5 @@
 {
-  "include": [
-    "~/.config/waybar/modules/custom-modules.jsonc",
-  ],
+  "include": ["~/.config/waybar/modules/custom-modules.jsonc"],
   "clock": {
     "format": "{:L%a %d. | %I:%M %p}",
     "format-alt": "{:L%d %A %B W%V %Y}",
@@ -10,15 +8,7 @@
   "backlight": {
     "format": "{icon} {percent}%",
     "tooltip": false,
-    "format-icons": [
-      "󰃚",
-      "󰃛",
-      "󰃜",
-      "󰃝",
-      "󰃞",
-      "󰃟",
-      "󰃠"
-    ],
+    "format-icons": ["󰃚", "󰃛", "󰃜", "󰃝", "󰃞", "󰃟", "󰃠"],
   },
   "hyprland/workspaces": {
     "disable-scroll": true,
@@ -53,24 +43,14 @@
     "format-icons": {
       "headphone": "",
       "headset": "d",
-      "default": [
-        "",
-        "",
-        " "
-      ],
+      "default": ["", "", " "],
     },
     "tooltip-format": "Playing at {volume}%",
     "on-click-right": "pamixer -t",
     "on-click": "hyprdev-show-audio",
   },
   "network": {
-    "format-icons": [
-      "󰤯",
-      "󰤟",
-      "󰤢",
-      "󰤥",
-      "󰤨"
-    ],
+    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
     "format": "{icon}",
     "format-wifi": "{icon}",
     "format-ethernet": "󰀂",
@@ -86,30 +66,8 @@
     "format": "{icon} {capacity}%",
     "format-charging": "{icon} {capacity}%",
     "format-icons": {
-      "charging": [
-        "󰢜",
-        "󰂆",
-        "󰂇",
-        "󰂈",
-        "󰢝",
-        "󰂉",
-        "󰢞",
-        "󰂊",
-        "󰂋",
-        "󰂅"
-      ],
-      "default": [
-        "󰁺",
-        "󰁻",
-        "󰁼",
-        "󰁽",
-        "󰁾",
-        "󰁿",
-        "󰂀",
-        "󰂁",
-        "󰂂",
-        "󰁹"
-      ],
+      "charging": ["󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"],
+      "default": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
     },
     "tooltip-format-discharging": "{power:>1.0f}W↓ {capacity}%",
     "tooltip-format-charging": "{power:>1.0f}W↑ {capacity}%",
@@ -127,11 +85,7 @@
     "format": "{player_icon} {dynamic}",
     "format-paused": "{status_icon} <i>{dynamic}</i>",
     "dynamic-len": 30,
-    "dynamic-importance-order": [
-      "album",
-      "position",
-      "length"
-    ],
+    "dynamic-importance-order": ["album", "position", "length"],
     "title-len": 15,
     "album-len": 15,
     "player-icons": {
@@ -156,10 +110,9 @@
       "transition-duration": 600,
       "children-class": "tray-group-item",
     },
-    "modules": [
-      "custom/expand-icon",
-      "hyprland/language",
-      "tray"
-    ],
+    "modules": ["custom/expand-icon", "hyprland/language", "tray"],
+  },
+  "tray": {
+    "spacing": 10,
   },
 }
