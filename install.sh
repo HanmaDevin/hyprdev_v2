@@ -28,7 +28,7 @@ installPackages() {
 }
 
 installAurPackages() {
-  local packages=("google-chrome" "vesktop" "xpadneo-dkms" "nwg-look" "openvpn3" "xwayland-satellite" "wlogout" "localsend-bin" "qimgv" "openvpn-update-systemd-resolved" "gpu-screen-recorder" "lazydocker" "ufw-docker" "qt-heif-image-plugin" "tte" "luajit-tiktoken-bin" "ani-cli" "bluetui")
+  local packages=("google-chrome" "visual-studio-code-bin" "vesktop" "xpadneo-dkms" "nwg-look" "openvpn3" "xwayland-satellite" "wlogout" "localsend-bin" "qimgv" "openvpn-update-systemd-resolved" "gpu-screen-recorder" "lazydocker" "ufw-docker" "qt-heif-image-plugin" "tte" "luajit-tiktoken-bin" "ani-cli" "bluetui")
   for pkg in "${packages[@]}"; do
     yay -S --noconfirm "$pkg"
   done
