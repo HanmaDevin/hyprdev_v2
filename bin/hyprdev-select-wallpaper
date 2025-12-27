@@ -1,38 +1,29 @@
 #!/usr/bin/env bash
 
-if [ -f ~/.diashow-running ]; then
-    notify-send "Diashow running, toggle it off" "Super + Alt + Space"
-    exit 1
+WALLPAPER_DIR="$HOME/Pictures/Wallpaper"                                                                 # edit as per your system
+IMAGE_PICKER_CONFIG="$HOME/.config/rofi/launchers/type-2/style-13.rasi"                                # razi config
+WALLPAPER_FILES=$(find "$WALLPAPER_DIR" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" \)) # add other like gif ...
+CURRENT_WALLPAPER_FILE=$(basename "$(swww query | awk '{print $NF}')")
+ROFI_MENU=""
+
+while IFS= read -r WALLPAPER_PATH; do
+  WALLPAPER_NAME=$(basename "$WALLPAPER_PATH")
+  if [[ "$WALLPAPER_NAME" == "$CURRENT_WALLPAPER_FILE" ]]; then
+    ROFI_MENU+="${WALLPAPER_NAME} (current)\0icon\x1f${WALLPAPER_PATH}\n"
+  else
+    ROFI_MENU+="${WALLPAPER_NAME}\0icon\x1f${WALLPAPER_PATH}\n"
+  fi
+done <<<"$WALLPAPER_FILES"
+
+SELECTED_WALLPAPER=$(echo -e "$ROFI_MENU" | rofi -dmenu \
+  -p "Select Wallpaper:" \
+  -theme "$IMAGE_PICKER_CONFIG" \
+  -markup-rows)
+
+SELECTED_WALLPAPER_NAME=$(echo "$SELECTED_WALLPAPER" | sed 's/ (current)//')
+
+if [[ -n "$SELECTED_WALLPAPER_NAME" ]]; then
+  matugen image "$WALLPAPER_DIR/$SELECTED_WALLPAPER_NAME"
+  cp "$WALLPAPER_DIR/$SELECTED_WALLPAPER_NAME" "$HOME/.current_wallpaper"
+  notify-send "Wallpaper changed to" "$SELECTED_WALLPAPER_NAME"
 fi
-
-# Ensure elephant is running before launching walker
-if ! pgrep -x elephant >/dev/null; then
-    elephant &
-fi
-
-# Ensure walker service is running
-if ! pgrep -f "walker --gapplication-service" >/dev/null; then
-    walker --gapplication-service &
-fi
-
-WALLPAPER_DIR="$HOME/Pictures/Wallpaper"
-CURRENT_WALL=$(swww query | sed 's/.*image: //')
-
-MENU=""
-for wall in $(fd -E "$CURRENT_WALL" . "$WALLPAPER_DIR"); do
-    MENU+="$(basename "$wall")\n"
-done
-
-selected=$(echo -e "$MENU" | hyprdev-launch-walker --minheight 1 --maxheight 700 -N -d -p "Select Wallpaper...")
-
-if [ -z "$selected" ]; then
-    exit 1
-fi
-
-if [[ ! "$selected" =~ .*?\.(jpg|png|jpeg) ]]; then
-    notify-send "Hyprdev Wallpaper" "Invalid format"
-    exit 1
-fi
-
-matugen image "$WALLPAPER_DIR/$selected"
-cp "$WALLPAPER_DIR/$selected" ~/.current_wallpaper

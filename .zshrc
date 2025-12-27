@@ -109,8 +109,11 @@ alias refresh="source ~/.zshrc"
 alias gclone="gh repo clone"
 alias repolist="gh repo list"
 
-alias v="nvim"
-alias vim="nvim"
+alias v="code"
+alias vim="code"
+
+alias editbinds="code ~/.config/hypr/keybinds.conf"
+alias editkbd="code ~/.config/hypr/keyboard.conf"
 
 # pacman
 alias remove="yay -Rns --noconfirm"
@@ -120,7 +123,7 @@ alias search="yay -Slq | fzf --multi --preview 'yay -Sii {1}'"
 alias copy="wl-copy"
 alias paste="wl-paste"
 
-alias editzsh="nvim ~/.zshrc"
+alias editzsh="code ~/.zshrc"
 alias lg="lazygit"
 
 alias rm="rm -I"
@@ -133,13 +136,13 @@ alias q="exit"
 alias ..='z ..'
 
 # you may also use the following one
-bindkey -s '^o' 'nvim $(fzf)\n'
+bindkey -s '^o' 'code $(fzf)\n'
 
 # Always mkdir a path (this doesn't inhibit functionality to make a single dir)
 alias mkdir='mkdir -p'
 
-export EDITOR="nvim"
-export VISUAL="nvim"
+export EDITOR="code"
+export VISUAL="code"
 
 # History
 HISTSIZE=5000
