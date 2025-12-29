@@ -103,11 +103,6 @@ get_wallpaper() {
     cp ~/Wallpapes/* "$HOME/Pictures/Wallpaper/"
     rm -rf "$HOME/Wallpapes/"
     rm -rf "$HOME/Pictures/Wallpaper/.git"
-  else
-    if [ ! -d "$HOME/Pictures/Wallpaper/" ]; then
-      mkdir -p "$HOME/Pictures/Wallpaper/"
-      cp "$REPO/default_wall/default.jpg" "$HOME/Pictures/Wallpaper/"
-    fi
   fi
 }
 

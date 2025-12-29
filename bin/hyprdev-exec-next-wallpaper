@@ -18,6 +18,10 @@ WALLPAPER=$(find "$WALLPAPER_DIR" -type f ! -name "$(basename "$CURRENT_WALL")" 
 
 echo "$WALLPAPER"
 
+if [[ -z "$WALLPAPER" || -n "$WALLPAPER" ]]; then
+  exit 1
+fi
+
 # Apply the selected wallpaper
 swww img "$WALLPAPER" --transition-type wipe --transition-fps 144
 #

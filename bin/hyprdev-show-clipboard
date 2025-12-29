@@ -1,0 +1,5 @@
+#! /usr/bin/env bash
+
+MENU=$(cliphist list | awk '{print $2}')
+
+echo "$MENU" | rofi -dmenu -p "Clipboard" -theme ~/.local/share/rofi/themes/clipboard.rasi | cliphist decode | wl-copy
