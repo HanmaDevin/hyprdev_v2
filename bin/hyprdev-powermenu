@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-top_margin=600
-bottom_margin=600
+top_margin=400
+bottom_margin=400
 
 # Check if wlogout is already running
 if pgrep -x "wlogout" >/dev/null; then

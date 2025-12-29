@@ -3,7 +3,7 @@
 
 window {
   font-family: "Adwaita Sans", "GeistMono Nerd Font Propo";
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: @foreground; /* text */
   background-color: alpha(@surface, 0.85);
 }
@@ -11,12 +11,12 @@ window {
 button {
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 20%;
+  background-size: 50%;
   background-color: transparent;
   animation: gradient_f 20s ease-in infinite;
   transition: all 0.3s cubic-bezier(0.15, 0, 0.1, 1);
   box-shadow: 0 0 10px 2px transparent;
-  border-radius: 10rem;
+  border-radius: 7rem;
   border-style: solid;
   border-width: 0;
   border-color: alpha(@surface, 0.85);

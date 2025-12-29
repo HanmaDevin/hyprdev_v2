@@ -136,6 +136,8 @@ copy_config() {
 
   cp "$REPO/.zshrc" "$HOME/"
   cp -r "$CFG_PATH" "$HOME/"
+  cp -r "$REPO/.local" "$HOME/"
+  cp -r "$REPO/.themes" "$HOME/"
   get_wallpaper
 
   sudo cp -r "$REPO/fonts/" "/usr/share"
