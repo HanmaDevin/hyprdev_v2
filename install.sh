@@ -51,7 +51,7 @@ installDeepCoolDriver() {
   deepcool=$(gum choose "Yes" "No")
   if [[ "$deepcool" == "Yes" ]]; then
     sudo cp "$REPO/DeepCool/deepcool-digital-linux" "/usr/sbin"
-    sudo cp "$REPO/DeepCool/deepcool-digital.service" "/etc/systemd/system/"
+    sudo cp "$REPO/DeepCool/deepcool-digital.service" "/etc/systemd/system"
     sudo systemctl enable deepcool-digital
   fi
 }
@@ -96,56 +96,83 @@ get_wallpaper() {
   echo ">>> Do you want to download cool wallpaper?"
   ans=$(gum choose "Yes" "No")
   if [[ "$ans" == "Yes" ]]; then
-    if [ ! -d "$HOME/Pictures/Wallpaper/" ]; then
-      mkdir -p "$HOME/Pictures/Wallpaper/"
+    if [ ! -d "$HOME/Pictures/Wallpaper" ]; then
+      mkdir -p "$HOME/Pictures/Wallpaper"
     fi
     git clone "https://github.com/HanmaDevin/Wallpapes.git" "$HOME/Wallpapes"
-    cp ~/Wallpapes/* "$HOME/Pictures/Wallpaper/"
-    rm -rf "$HOME/Wallpapes/"
+    cp ~/Wallpapes/* "$HOME/Pictures/Wallpaper"
+    rm -rf "$HOME/Wallpapes"
     rm -rf "$HOME/Pictures/Wallpaper/.git"
   fi
 }
 
 copy_config() {
-  local ans
-  echo ">>> Do you want to create backups before applying changes?"
-  ans=$(gum choose "Yes" "No")
-  if [[ "$ans" == "Yes" ]]; then
-    mv "$HOME/.zshrc" "$HOME/.zshrc.bak"
-    mv "$HOME/.config" "$HOME/.config.bak"
-  fi
+  local theme
 
   gum spin --spinner dot --title "Creating Home..." -- sleep 2
-  mkdir -p "$HOME/Documents/"
-  mkdir -p "$HOME/Music/"
-  mkdir -p "$HOME/Desktop/"
-  mkdir -p "$HOME/Downloads/"
-  mkdir -p "$HOME/Pictures/"
-  mkdir -p "$HOME/Videos/"
-  mkdir -p "$HOME/Templates/"
-  mkdir -p "$HOME/Public/"
+  mkdir -p "$HOME/Documents"
+  mkdir -p "$HOME/Music"
+  mkdir -p "$HOME/Desktop"
+  mkdir -p "$HOME/Downloads"
+  mkdir -p "$HOME/Pictures"
+  mkdir -p "$HOME/Videos"
+  mkdir -p "$HOME/Templates"
+  mkdir -p "$HOME/Public"
 
-  if [[ ! -d "$HOME/Pictures/Screenshots/" ]]; then
-    mkdir -p "$HOME/Pictures/Screenshots/"
+  if [[ ! -d "$HOME/Pictures/Screenshots" ]]; then
+    mkdir -p "$HOME/Pictures/Screenshots"
   fi
 
-  cp "$REPO/.zshrc" "$HOME/"
-  cp -r "$CFG_PATH" "$HOME/"
-  sudo mv "$HOME/.config/btop/themes/catppuccin.theme" "/usr/share/btop/themes/"
-  cp -r "$REPO/.local" "$HOME/"
-  cp -r "$REPO/.themes" "$HOME/"
+  cp "$REPO/.zshrc" "$HOME"
+  cp -r "$CFG_PATH" "$HOME"
+  sudo mv "$HOME/.config/btop/themes/catppuccin.theme" "/usr/share/btop/themes"
+  cp -r "$REPO/.local" "$HOME"
+  cp -r "$REPO/.themes" "$HOME"
   get_wallpaper
 
-  sudo cp -r "$REPO/fonts/" "/usr/share"
+  sudo cp -r "$REPO/fonts" "/usr/share"
   sudo cp "$REPO/etc/pacman.conf" "/etc/pacman.conf"
-  sudo cp -r "$REPO/bin" /usr/
-  sudo cp -r "$REPO/icons/" "/usr/share/"
-  sudo cp -r "$REPO/sddm/catppuccin-mocha" "/usr/share/sddm/themes/"
-  sudo cp -r "$REPO/sddm/sddm.conf" "/etc/"
+  sudo cp -r "$REPO/etc/xdg" "/etc"
+  sudo cp -r "$REPO/bin" "/usr"
+  sudo cp -r "$REPO/icons" "/usr/share"
+  sudo cp -r "$REPO/sddm/monochrome" "/usr/share/sddm/themes"
+  sudo cp -r "$REPO/sddm/sddm.conf" "/etc"
 
   touch ~/.first_run
 
-  hyprdev-apply-theme catppuccin
+  echo ">>> Which theme do you wish to apply first?"
+  echo ">>> You can always change it later"
+  theme=$(gum choose "Catppuccin" "E-Ink" "Everforest Dark" "Gruvbox Dark" "Kanagawa" "Nightfox" "Nord Darker" "Rose Pine" "Tokyo Night")
+  case "$theme" in
+  "Catppucin")
+    hyprdev-apply-theme catppuccin
+    ;;
+  "E-Ink")
+    hyprdev-apply-theme e-ink
+    ;;
+  "Everforest Dark")
+    hyprdev-apply-theme everforest-dark
+    ;;
+  "Gruvbox Dark")
+    hyprdev-apply-theme gruvbox-dark
+    ;;
+  "Kanagawa")
+    hyprdev-apply-theme gruvbox-dark
+    ;;
+  "Nightfox")
+    hyprdev-apply-theme nightfox
+    ;;
+  "Nord Darker")
+    hyprdev-apply-theme nord-darker
+    ;;
+  "Rose Pine")
+    hyprdev-apply-theme rose-pine
+    ;;
+  "Tokyo Night")
+    hyprdev-apply-theme rose-pine
+    ;;
+  esac
+  echo ">>> Theme: <$theme> applied!"
 
   echo ">>> Trying to change the shell..."
   chsh -s "/bin/zsh"

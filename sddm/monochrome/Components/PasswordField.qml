@@ -6,36 +6,40 @@ TextField {
   focus: true
   selectByMouse: true
   placeholderText: "Password"
+  placeholderTextColor: config.textPlaceholder
   echoMode: TextInput.Password
-  passwordCharacter: "•"
+  // passwordCharacter: "•"
   passwordMaskDelay: config.PasswordShowLastLetter
-  selectionColor: config.overlay0
+  selectionColor: config.textDefault
   renderType: Text.NativeRendering
   font.family: config.Font
-  font.pointSize: config.FontSize
-  font.bold: true
-  color: config.text
-  horizontalAlignment: TextInput.AlignHCenter
+  font.pixelSize: config.FontSize
+  font.bold: false
+  color: config.textDefault
+  horizontalAlignment: TextInput.AlignHLeft
   background: Rectangle {
     id: passFieldBackground
-    radius: 3
-    color: config.surface0
+    color: config.lineeditBgNormal
+    border.color: config.lineeditBorderNormal
+    border.width: 1
+    radius: 2
+    opacity: config.opacityDefault
   }
   states: [
-    State {
-      name: "focused"
-      when: passwordField.activeFocus
-      PropertyChanges {
-        target: passFieldBackground
-        color: config.surface1
-      }
-    },
     State {
       name: "hovered"
       when: passwordField.hovered
       PropertyChanges {
         target: passFieldBackground
-        color: config.surface1
+        border.color: config.lineeditBorderHovered
+      }
+    },
+    State {
+      name: "focused"
+      when: passwordField.activeFocus
+      PropertyChanges {
+        target: passFieldBackground
+        border.color: config.lineeditBorderFocused
       }
     }
   ]

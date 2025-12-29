@@ -3,41 +3,43 @@ import QtQuick.Controls 2.15
 
 TextField {
   id: userField
-  height: inputHeight
-  width: inputWidth
   selectByMouse: true
   echoMode: TextInput.Normal
-  selectionColor: config.overlay0
+  selectionColor: config.textDefault
   renderType: Text.NativeRendering
   font {
     family: config.Font
-    pointSize: config.FontSize
-    bold: true
+    pixelSize: config.FontSize
+    bold: false
   }
-  color: config.text
-  horizontalAlignment: Text.AlignHCenter
+  color: config.textDefault
+  horizontalAlignment: Text.AlignHLeft
   placeholderText: "Username"
+  placeholderTextColor: config.textPlaceholder
   text: userModel.lastUser
   background: Rectangle {
     id: userFieldBackground
-    color: config.surface0
-    radius: 3
+    color: config.lineeditBgNormal
+    border.color: config.lineeditBorderNormal
+    border.width: 1
+    radius: 2
+    opacity: config.opacityDefault
   }
   states: [
-    State {
-      name: "focused"
-      when: userField.activeFocus
-      PropertyChanges {
-        target: userFieldBackground
-        color: config.surface1
-      }
-    },
     State {
       name: "hovered"
       when: userField.hovered
       PropertyChanges {
         target: userFieldBackground
-        color: config.surface1
+        border.color: config.lineeditBorderHovered
+      }
+    },
+    State {
+      name: "focused"
+      when: userField.activeFocus
+      PropertyChanges {
+        target: userFieldBackground
+        border.color: config.lineeditBorderFocused
       }
     }
   ]

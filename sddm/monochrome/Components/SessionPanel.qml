@@ -11,31 +11,47 @@ Item {
     model: sessionModel
     delegate: ItemDelegate {
       id: sessionEntry
-      height: inputHeight
+      height: 30
       width: parent.width
       highlighted: sessionList.currentIndex == index
       contentItem: Text {
         renderType: Text.NativeRendering
         font.family: config.Font
-        font.pointSize: config.FontSize
+        font.pixelSize: config.FontSize
         font.bold: true
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
-        color: config.text
+        color: config.textDefault
         text: name
       }
       background: Rectangle {
         id: sessionEntryBackground
-        color: config.surface1
-        radius: 3
+        color: config.bgDefault
+        border.color: config.bgDefault
+        border.width: 1
+        radius: 2
       }
       states: [
+        State {
+          name: "pressed"
+          when: sessionEntry.down
+          PropertyChanges {
+            target: sessionEntryBackground
+            color: config.viewitemBgPressed
+            border.color: config.viewitemBorderPressed
+            border.width: 1
+            radius: 2
+          }
+        },
         State {
           name: "hovered"
           when: sessionEntry.hovered
           PropertyChanges {
             target: sessionEntryBackground
-            color: config.surface2
+            color: config.viewitemBgHovered
+            border.color: config.viewitemBorderHovered
+            border.width: 1
+            radius: 2
           }
         }
       ]
@@ -56,19 +72,23 @@ Item {
   }
   Button {
     id: sessionButton
-    height: inputHeight
-    width: inputHeight
+    height: 32
+    width: 32
     hoverEnabled: true
     icon {
       source: Qt.resolvedUrl("../icons/settings.svg")
-      height: height
-      width: width
-      color: config.text
+      color: config.textDefault
     }
     background: Rectangle {
       id: sessionButtonBackground
-      color: config.surface0
-      radius: 3
+      gradient: Gradient {
+        GradientStop { id: gradientStop0; position: 0.0; color: config.buttonBgNormal }
+        GradientStop { id: gradientStop1; position: 1.0; color: config.buttonBgNormal }
+      }
+      border.color: config.buttonBorderNormal
+      border.width: 1
+      radius: 2
+      opacity: config.opacityDefault
     }
     states: [
       State {
@@ -76,7 +96,16 @@ Item {
         when: sessionButton.down
         PropertyChanges {
           target: sessionButtonBackground
-          color: config.surface1
+          color: config.buttonBorderPressed
+          opacity: 1
+        }
+        PropertyChanges {
+          target: gradientStop0
+          color: config.buttonBgPressed
+          }
+        PropertyChanges {
+          target: gradientStop1
+          color: config.buttonBgPressed
         }
       },
       State {
@@ -84,15 +113,33 @@ Item {
         when: sessionButton.hovered
         PropertyChanges {
           target: sessionButtonBackground
-          color: config.surface2
+          border.color: config.buttonBorderHovered
+          opacity: 1
+        }
+        PropertyChanges {
+          target: gradientStop0
+          color: config.buttonBgHovered0
+          }
+        PropertyChanges {
+          target: gradientStop1
+          color:config.buttonBgHovered1
         }
       },
       State {
-        name: "selection"
-        when: sessionPopup.visible
+        name: "focused"
+        when: sessionButton.activeFocus
         PropertyChanges {
           target: sessionButtonBackground
-          color: config.surface2
+          border.color: config.buttonBorderFocused
+          opacity: 1
+        }
+        PropertyChanges {
+          target: gradientStop0
+          color: config.buttonBgFocused0
+          }
+        PropertyChanges {
+          target: gradientStop1
+          color: config.buttonBgFocused1
         }
       }
     ]
@@ -109,13 +156,15 @@ Item {
   }
   Popup {
     id: sessionPopup
-    width: inputWidth + padding * 2
-    x: (sessionButton.width + sessionList.spacing) * -7.6
+    width: inputWidth
+    x: -(inputWidth)
     y: -(contentHeight + padding * 2) + sessionButton.height
-    padding: inputHeight / 10
+    padding: 8
     background: Rectangle {
-      radius: 5.4
-      color: config.surface0
+      color: config.buttonBgNormal
+      border.color: config.buttonBorderNormal
+      border.width: 1
+      radius: 2
     }
     contentItem: ListView {
       id: sessionList

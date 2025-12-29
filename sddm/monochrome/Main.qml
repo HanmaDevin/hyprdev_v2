@@ -13,7 +13,7 @@ Item {
     height: parent.height
     width: parent.width
     z: 0
-    color: config.base
+    color: config.bgDefault
   }
   Image {
     id: backgroundImage
@@ -34,7 +34,9 @@ Item {
     z: 3
     anchors {
       fill: parent
-      margins: 50
+      leftMargin: Screen.width * 0.02
+      rightMargin: Screen.width * 0.02
+      bottomMargin: Screen.height * 0.02
     }
     Clock {
       id: time
