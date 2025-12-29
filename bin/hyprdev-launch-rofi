@@ -1,0 +1,3 @@
+#! /usr/bin/env bash
+
+pkill rofi || rofi -show drun -theme ~/.local/share/rofi/themes/grid.rasi

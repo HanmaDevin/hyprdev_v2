@@ -149,6 +149,8 @@ copy_config() {
 
   touch ~/.first_run
 
+  hyprdev-apply-theme catppuccin
+
   echo ">>> Trying to change the shell..."
   chsh -s "/bin/zsh"
 }

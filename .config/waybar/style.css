@@ -1,9 +1,11 @@
-@import 'colors/matugen.css';
+@import "colors/colors.css";
 
 * {
   border: none;
   border-radius: 0;
-  font-family: "Adwaita Sans", "JetBrainsMono Nerd Font Propo", Roboto, Helvetica, Arial, sans-serif;
+  font-family:
+    "Adwaita Sans", "JetBrainsMono Nerd Font Propo", Roboto, Helvetica, Arial,
+    sans-serif;
   font-weight: 600;
   font-size: 16px;
   min-height: 0;
@@ -15,7 +17,7 @@ window#waybar {
 }
 
 tooltip {
-  background: @surface;
+  background: @bg0;
   border: 1px solid rgba(100, 114, 125, 0.5);
   border-radius: 1rem;
 }
@@ -51,11 +53,46 @@ tooltip label {
 #battery,
 #network,
 #power-profiles-daemon {
-  background-color: #121212;
+  background-color: @bg0;
   margin-right: 10px;
   padding: 0 10px;
-  background-color: @surface;
-  color: @primary;
+  color: @blue;
+}
+
+#network {
+  color: @yellow;
+}
+
+#clock {
+  color: @purple;
+}
+
+#bluetooth {
+  color: @blue;
+}
+
+#pulseaudio {
+  color: @aqua;
+}
+
+#battery {
+  color: @green;
+}
+
+#custom-vpn {
+  color: @orange;
+}
+
+#custom-launcher {
+  color: @blue;
+}
+
+#custom-weather {
+  color: @purple;
+}
+
+#custom-screenrecording-indicator {
+  color: @red;
 }
 
 #power-profiles-daemon {
@@ -69,8 +106,8 @@ tooltip label {
 #workspaces {
   padding: 8px 5px;
   border-radius: 16px;
-  background-color: @surface;
-  color: @primary;
+  background-color: @bg0;
+  color: @blue;
 }
 
 #workspaces button {
@@ -79,12 +116,12 @@ tooltip label {
   border-radius: 50px;
   color: transparent;
   transition: all 0.3s ease-in-out;
-  background-color: @on_secondary;
+  background-color: @bg4;
 }
 
 #workspaces button.active {
-  background-color: @primary;
-  color: @surface;
+  background-color: @green;
+  color: @bg4;
   min-width: 50px;
   transition: all 0.3s ease-in-out;
   font-size: 13px;
@@ -92,16 +129,16 @@ tooltip label {
 }
 
 #workspaces button:hover {
-  background-color: @secondary;
-  color: @surface;
+  background-color: @aqua;
+  color: @bg4;
   border-radius: 16px;
   min-width: 50px;
   background-size: 400% 400%;
 }
 
 #workspaces button.urgent {
-  background-color: @error;
-  color: @surface;
+  background-color: @bg4;
+  color: @red;
   border-radius: 16px;
   min-width: 50px;
   background-size: 400% 400%;
@@ -110,8 +147,8 @@ tooltip label {
 
 @keyframes blink {
   to {
-    color: @primary;
-    background-color: @surface;
+    color: @blue;
+    background-color: @bg4;
   }
 }
 

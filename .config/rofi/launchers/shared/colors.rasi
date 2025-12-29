@@ -1,18 +1,8 @@
-/**
- *
- * Author : Aditya Shakya (adi1090x)
- * Github : @adi1090x
- * 
- * Colors
- *
- * Available Colors Schemes
- *
- * adapta    catppuccin    everforest    navy       paper
- * arc       cyberpunk     gruvbox       nord       solarized
- * black     dracula       lovelace      onedark    yousai
- *
- **/
-
-/* Import color-scheme from `colors` directory */
-
-@import "~/.config/rofi/colors/onedark.rasi"
+* {
+    background:                  rgba(15, 20, 23, 0.8);
+    background-alt:              #40484c;
+    foreground:                  #dee3e6;
+    selected:                    #8ad0ee;
+    active:                      #8ad0ee;
+    urgent:                      #ffb4ab;
+}

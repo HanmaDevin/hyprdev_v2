@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-WALLPAPER_DIR="$HOME/Pictures/Wallpaper"                                                                 # edit as per your system
-IMAGE_PICKER_CONFIG="$HOME/.config/rofi/launchers/type-2/style-13.rasi"                                # razi config
+WALLPAPER_DIR="$HOME/Pictures/Wallpaper"                                                                   # edit as per your system
+THEME="$HOME/.local/share/rofi/themes/wallpapers.rasi"                                                     # razi config
 WALLPAPER_FILES=$(find "$WALLPAPER_DIR" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" \)) # add other like gif ...
 CURRENT_WALLPAPER_FILE=$(basename "$(swww query | awk '{print $NF}')")
 ROFI_MENU=""
@@ -17,7 +17,7 @@ done <<<"$WALLPAPER_FILES"
 
 SELECTED_WALLPAPER=$(echo -e "$ROFI_MENU" | rofi -dmenu \
   -p "Select Wallpaper:" \
-  -theme "$IMAGE_PICKER_CONFIG" \
+  -theme "$THEME" \
   -markup-rows)
 
 SELECTED_WALLPAPER_NAME=$(echo "$SELECTED_WALLPAPER" | sed 's/ (current)//')

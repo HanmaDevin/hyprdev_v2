@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+THEME_DIR="$HOME/.config/colorschemes"
+THEME="$HOME/.local/share/rofi/themes/minimal.rasi"
+THEMES=$(ls "$THEME_DIR") # add other like gif ...
+ROFI_MENU=""
+
+while IFS= read -r theme; do
+  ROFI_MENU+="$theme\n"
+done <<<"$THEMES"
+
+SELECTED_THEME=$(echo -e "$ROFI_MENU" | rofi -dmenu \
+  -p "Select Theme:" \
+  -theme "$THEME" \
+  -markup-rows)
+
+if [[ ! -z "$SELECTED_THEME" || -n "$SELECTED_THEME" ]]; then
+  hyprdev-apply-theme "$SELECTED_THEME"
+fi
