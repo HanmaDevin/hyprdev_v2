@@ -132,5 +132,10 @@ echo -e "${CYAN}-> Applying Rofi theme...${NC}"
 cp "$THEME_DIR/rofi/colors.rasi" "$HOME/.local/share/rofi/colors/colors.rasi" >/dev/null 2>&1
 echo ""
 
+# Mako theme
+echo -e "${CYAN}-> Applying mako theme...${NC}"
+cp "$THEME_DIR/mako-colors" "$HOME/.config/mako/colors/colors" >/dev/null 2>&1
+makoctl reload
+
 # Final success notification
 notify-send "Theme Applied" "Successfully switched to: $THEME" -t 5000
