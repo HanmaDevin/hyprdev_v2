@@ -1,0 +1,3 @@
+#! /usr/bin/env bash
+
+echo -en "$1" | rofi -dmenu -theme ~/.local/share/rofi/themes/capture.rasi

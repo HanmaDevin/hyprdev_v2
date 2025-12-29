@@ -15,7 +15,7 @@ while IFS= read -r WALLPAPER_PATH; do
   fi
 done <<<"$WALLPAPER_FILES"
 
-SELECTED_WALLPAPER=$(echo -e "$ROFI_MENU" | rofi -dmenu \
+SELECTED_WALLPAPER=$(echo -en "$ROFI_MENU" | rofi -dmenu \
   -p "Select Wallpaper:" \
   -theme "$THEME" \
   -markup-rows)
