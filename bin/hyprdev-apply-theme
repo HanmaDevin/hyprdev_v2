@@ -136,6 +136,12 @@ echo ""
 echo -e "${CYAN}-> Applying mako theme...${NC}"
 cp "$THEME_DIR/mako-colors" "$HOME/.config/mako/colors/colors" >/dev/null 2>&1
 makoctl reload
+echo ""
+
+# Btop theme
+echo -e "${CYAN}-> Applying btop theme...${NC}"
+cp "$THEME_DIR/btop.conf" "$HOME/.config/btop"
+echo ""
 
 # Final success notification
 notify-send "Theme Applied" "Successfully switched to: $THEME" -t 5000
