@@ -10,6 +10,7 @@ CURRENT_THEME=$(cat ~/.config/colorschemes/.current-theme)
 echo "$CURRENT_THEME"
 THEME_DIR="$HOME/.config/colorschemes"
 WALLPAPER_DIR="$THEME_DIR/$CURRENT_THEME/wallpapers"
+echo "$WALLPAPER_DIR"
 
 CURRENT_WALL=$(swww query | sed 's/.*image: //')
 
@@ -18,7 +19,7 @@ WALLPAPER=$(find "$WALLPAPER_DIR" -type f ! -name "$(basename "$CURRENT_WALL")" 
 
 echo "$WALLPAPER"
 
-if [[ -z "$WALLPAPER" || -n "$WALLPAPER" ]]; then
+if [[ -z "$WALLPAPER" ]]; then
   exit 1
 fi
 
