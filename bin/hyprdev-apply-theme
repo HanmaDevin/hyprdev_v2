@@ -132,10 +132,5 @@ echo -e "${CYAN}-> Applying Rofi theme...${NC}"
 cp "$THEME_DIR/rofi/colors.rasi" "$HOME/.local/share/rofi/colors/colors.rasi" >/dev/null 2>&1
 echo ""
 
-# Discord theme
-echo -e "${CYAN}-> Applying Discord theme...${NC}"
-cp "$THEME_DIR/discord/current.theme.css" "$HOME/.config/vesktop/themes/" >/dev/null 2>&1
-echo ""
-
 # Final success notification
 notify-send "Theme Applied" "Successfully switched to: $THEME" -t 5000

@@ -147,12 +147,12 @@ tooltip label {
 
 @keyframes blink {
   to {
-    color: @blue;
-    background-color: @bg4;
+    color: @bg0;
+    background-color: @bg0;
   }
 }
 
-#custom-screenrecording.active {
+#custom-screenrecording-indicator.active {
   animation-name: blink;
   animation-duration: 0.5s;
   animation-timing-function: linear;
