@@ -79,7 +79,7 @@
       "warning": 30,
     },
     "interval": 5,
-    "tooltip": false,
+    "tooltip": true,
   },
   "mpris": {
     "format": "{player_icon} {dynamic}",

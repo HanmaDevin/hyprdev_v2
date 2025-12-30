@@ -152,8 +152,23 @@ tooltip label {
   }
 }
 
+@keyframes critical {
+  to {
+    color: @red;
+    background-color: @bg0;
+  }
+}
+
 #custom-screenrecording-indicator.active {
   animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#battery.critical {
+  animation-name: critical;
   animation-duration: 0.5s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
