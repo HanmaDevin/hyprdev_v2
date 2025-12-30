@@ -11,7 +11,7 @@ window {
 button {
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 50%;
+  background-size: 30%;
   background-color: transparent;
   animation: gradient_f 20s ease-in infinite;
   transition: all 0.3s cubic-bezier(0.15, 0, 0.1, 1);
@@ -26,7 +26,8 @@ button {
 button:focus {
   box-shadow: none;
   outline-style: none;
-  background-size: 20%;
+  background-size: 50%;
+  background-color: @purple;
 }
 
 button:hover {
