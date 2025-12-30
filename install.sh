@@ -25,6 +25,9 @@ installPackages() {
 
   rustup default stable
 
+  hyprpm update
+  hyprpm add "https://github.com/hyprwm/hyprland-plugins"
+  hyprpm enable hyprbars
 }
 
 installAurPackages() {
