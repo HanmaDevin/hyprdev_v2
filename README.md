@@ -117,6 +117,7 @@ these launch options `-sdlvideodriver x11` &
 | <kbd>Super</kbd> + <kbd>?</kbd>                        | Open Cheatsheet                                    |
 | <kbd>Super</kbd> + <kbd>Return</kbd>                   | Open Terminal (Kitty)                              |
 | <kbd>Super</kbd> + <kbd>Q</kbd>                        | Kill active Window                                 |
+| <kbd>Super</kbd> + <kbd>I</kbd>                        | Install Software                                   |
 | <kbd>Super</kbd> + <kbd>Backspace</kbd>                | Lock Screen (Hyprlock)                             |
 | <kbd>Super</kbd> + <kbd>E</kbd>                        | Open Nautilus (File Manager)                       |
 | <kbd>Super</kbd> + <kbd>V</kbd>                        | Toggle floating Window                             |

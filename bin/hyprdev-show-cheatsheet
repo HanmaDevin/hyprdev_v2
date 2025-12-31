@@ -4,6 +4,7 @@ KEYBINDS=""
 
 KEYBINDS+=" + Shift + /         Open Cheatsheet\n"
 KEYBINDS+=" + Return            Open Terminal\n"
+KEYBINDS+=" + I                 Install Software\n"
 KEYBINDS+=" + Shift + T         Select Theme\n"
 KEYBINDS+=" + Alt + Space       Open Hyprdev Menu\n"
 KEYBINDS+=" + Q                 Close Window\n"
@@ -40,4 +41,4 @@ KEYBINDS+=" + CTRL + V          Open Audio Settings\n"
 KEYBINDS+=" + Shift + S         Take Screenshot\n"
 KEYBINDS+=" + Shift + R         Reload Waybar"
 
-echo -e "$KEYBINDS" | rofi -dmenu -theme ~/.local/share/rofi/themes/cheatsheet.rasi
+echo -e "$KEYBINDS" | rofi -dmenu -p "Menu" -theme ~/.local/share/rofi/themes/cheatsheet.rasi
