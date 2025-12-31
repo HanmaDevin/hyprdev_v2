@@ -62,6 +62,15 @@
     "spacing": 1,
     "on-click": "hyprdev-show-network",
   },
+  "bluetooth": {
+    "format": " {status}",
+    "format-disabled": "󰂲",
+    "format-connected": "󰂱",
+    "format-no-controller": "",
+    "tooltip-format": "{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}: {device_battery_percentage}%",
+    "on-click": "hyprdev-show-bluetooth",
+  },
   "battery": {
     "format": "{icon} {capacity}%",
     "format-charging": "{icon} {capacity}%",
