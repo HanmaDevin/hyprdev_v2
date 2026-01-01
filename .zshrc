@@ -192,7 +192,7 @@ get() {
   fi
 }
 
-extract() {
+unpack() {
   local arch="$1"
   local dest="$PWD"
   if [ -n "$2" ]; then
@@ -204,10 +204,11 @@ extract() {
       *.tar.gz) tar xvzf $arch -C "$dest" ;;
       *.rar) rar x $arch "$dest";;
       *.tar) tar xvf $arch -C "$dest" ;;
+      *.tar.xz) tar xvf $arch -C "$dest" ;;
       *.tbz2) tar xvjf $arch -C "$dest" ;;
       *.tgz) tar xvzf $arch -C "$dest" ;;
       *.zip) unzip $arch -d "$dest" ;;
-      *.gz) gunizp $arch ;;
+      *.gz) gunzip $arch ;;
       *) echo "Do not know how to extract for now :(" ;;
     esac
   else
