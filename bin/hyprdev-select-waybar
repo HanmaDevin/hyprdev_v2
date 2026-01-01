@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+THEMES_DIR="$HOME/.config/waybar/themes"
+MENU=""
+
+DEST="$HOME/.config/waybar"
+
+for theme in "$THEMES_DIR"/*; do
+  name=$(basename "$theme")
+  MENU+="$name\n"
+done
+
+selected=$(echo -en "$MENU" | rofi -dmenu -p Themes -theme ~/.local/share/rofi/themes/minimal.rasi)
+
+if [[ -z "$selected" ]]; then
+  exit 0
+fi
+
+cp "$THEMES_DIR/$selected"/* "$DEST"
+hyprdev-reload-waybar

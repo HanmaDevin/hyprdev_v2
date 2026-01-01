@@ -1,7 +1,7 @@
 {
   "custom/launcher": {
     "format": "",
-    "tooltip": false,
+    "tooltip": true,
     "on-click": "hyprdev-menu",
     "on-click-right": "kitty",
     "tooltip-format": "Hyprdev Menu\n\nSuper + Alt + Space",

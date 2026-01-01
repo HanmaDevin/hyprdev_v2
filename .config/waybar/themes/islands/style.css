@@ -8,10 +8,12 @@
     sans-serif;
   font-weight: 600;
   font-size: 16px;
+  min-height: 0;
+  border-radius: 50px;
 }
 
 window#waybar {
-  background: @bg0;
+  background: transparent;
 }
 
 tooltip {
@@ -53,7 +55,7 @@ tooltip label {
 #power-profiles-daemon {
   background-color: @bg0;
   margin-right: 10px;
-  padding: 0 5;
+  padding: 0 10px;
   color: @blue;
 }
 

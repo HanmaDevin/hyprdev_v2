@@ -3,9 +3,9 @@
     "~/.config/waybar/modules/modules.jsonc",
     "~/.config/waybar/modules/custom-modules.jsonc",
   ],
-  "position": "bottom",
   "layer": "top",
   "reload_style_on_change": true,
+  "margin-top": 13,
   "modules-left": ["custom/launcher", "clock"],
   "modules-center": ["custom/screenrecording-indicator", "hyprland/workspaces"],
   "modules-right": [
