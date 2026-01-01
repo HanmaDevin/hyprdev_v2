@@ -122,6 +122,7 @@ these launch options `-sdlvideodriver x11` &
 | <kbd>Super</kbd> + <kbd>E</kbd>                        | Open Nautilus (File Manager)                       |
 | <kbd>Super</kbd> + <kbd>V</kbd>                        | Toggle floating Window                             |
 | <kbd>Super</kbd> + <kbd>Shift</kbd> + <kbd>R</kbd>     | Reload Waybar (Status Bar)                         |
+| <kbd>Super</kbd> + <kbd>Shift</kbd> + <kbd>W</kbd>     | Select Waybar Theme                                |
 | <kbd>Super</kbd> + <kbd>Delete</kbd>                   | Open Logout-Menu (wlogout)                         |
 | <kbd>Alt</kbd> + <kbd>Shift</kbd>                      | Toggle Keyboard Layout                             |
 | <kbd>Super</kbd> + <kbd>N</kbd>                        | Next Wallpaper                                     |
