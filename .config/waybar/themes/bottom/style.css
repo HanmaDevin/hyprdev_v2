@@ -99,34 +99,36 @@ tooltip label {
 
 #custom-launcher {
   font-size: 24px;
+  margin-right: 1;
 }
 
 #workspaces {
   padding: 8px 5px;
   border-radius: 16px;
   background-color: @bg0;
-  color: @blue;
 }
 
 #workspaces button {
-  padding: 0px 6px;
-  margin: 0px 3px;
-  border-radius: 50px;
-  color: transparent;
+  all: initial;
+  padding: 0 0px;
+  margin: 0 1px;
+  background-color: @bg0;
+}
+
+#workspaces button.empty {
   transition: all 0.3s ease-in-out;
-  background-color: @bg4;
+  opacity: 0.5;
 }
 
 #workspaces button.active {
-  background-color: @green;
-  color: @bg4;
-  min-width: 50px;
+  color: @fg;
   transition: all 0.3s ease-in-out;
   font-size: 13px;
   border-radius: 5px;
 }
 
 #workspaces button:hover {
+  transition: all 0.3s ease-in-out;
   background-color: @aqua;
   color: @bg4;
   border-radius: 16px;
