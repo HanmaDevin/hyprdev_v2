@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+now=$(date +%I:%M)
+default_theme="catppuccin"
+
+while true; do
+  current=$(cat ~/.config/colorschemes/.current-theme)
+  if [[ "$now" == "08:00" || "$now" > "08:00" ]]; then
+    echo "$current"
+    if [[ "$current" == "light" ]]; then
+      continue
+    fi
+    hyprdev-apply-theme "light"
+  elif [[ "$now" == "20:00" || "$now" > "20:00" ]]; then
+    if [[ "$current" == "light" ]]; then
+      hyprdev-apply-theme "$default_theme"
+    else
+      hyprdev-apply-theme "$current"
+    fi
+  fi
+done
