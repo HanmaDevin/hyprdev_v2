@@ -15,15 +15,13 @@ require("lspconfig").jdtls.setup({
             path = "/opt/jdk-21",
             default = true,
           },
-        },
-        runtimes = {
+
           {
             name = "JavaSE-25",
             path = "/opt/jdk-25",
             default = true,
           },
-        },
-        runtimes = {
+
           {
             name = "JavaSE-17",
             path = "/opt/jdk-17",

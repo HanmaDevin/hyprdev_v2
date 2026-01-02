@@ -143,5 +143,9 @@ echo -e "${CYAN}-> Applying btop theme...${NC}"
 cp "$THEME_DIR/btop.conf" "$HOME/.config/btop"
 echo ""
 
+echo -e "${CYAN}-> Applying nvim theme...${NC}"
+cp "$THEME_DIR/colorscheme.lua" "$HOME/.config/nvim/lua/plugins/"
+echo ""
+
 # Final success notification
 notify-send "Theme Applied" "Successfully switched to: $THEME" -t 5000
