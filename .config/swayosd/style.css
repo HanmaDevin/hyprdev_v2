@@ -1,28 +1,28 @@
-@import './colors/colors.css';
+@import "./colors/colors.css";
 
 window {
   border-radius: 30px;
   opacity: 0.97;
-  border: 2px solid @primary;
+  border: 2px solid @blue;
 
-  background-color: @background;
+  background-color: @bg0;
 }
 
 label {
   font-family: "Fira Sans";
   font-size: 11pt;
 
-  color: @on_surface;
+  color: @fg;
 }
 
 image {
-  color: @on_surface;
+  color: @fg;
 }
 
 progressbar {
-  border-radius: 0;
+  border-radius: 2px;
 }
 
 progress {
-  background-color: @primary;
+  background-color: @blue;
 }
