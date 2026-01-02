@@ -1,7 +1,1 @@
-background-color=#1a1b26
-text-color=#c0caf5
-border-color=#ff9e64
-progress-color=over #9ece6a
-
-[urgency=high]
-border-color=#f7768e
+include=~/.config/mako/colors/custom/tokyo-night

@@ -1,0 +1,14 @@
+background-color=#1f1f28
+text-color=#dcd7ba
+border-color=#ffa066
+# Per-mode settings
+
+[mode=do-not-disturb]
+invisible=1
+on-notify=none
+
+[mode=silent]
+on-notify=none
+
+[urgency=high]
+border-color=#e82424
