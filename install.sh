@@ -128,7 +128,7 @@ copy_config() {
 
   cp "$REPO/.zshrc" "$HOME"
   cp -r "$CFG_PATH" "$HOME"
-  sudo mv "$HOME/.config/btop/themes/catppuccin.theme" "/usr/share/btop/themes"
+  sudo cp -r "$HOME/.config/btop/themes" "/usr/share/btop"
   cp -r "$REPO/.local" "$HOME"
   cp -r "$REPO/.themes" "$HOME"
   get_wallpaper
