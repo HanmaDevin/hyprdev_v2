@@ -1,21 +1,18 @@
 #!/usr/bin/env bash
 
-current=$(cat ~/.config/colorschemes/.current-theme)
-
 while true; do
   now=$(date +%s)
-  if [[ "$now" -ge $(date -d "20:00" +%s) ]]; then
+  current=$(cat ~/.config/colorschemes/.current-theme)
+  if [[ "$now" -ge "$(date -d "20:00" +%s)" ]]; then
     if [[ "$current" == "light" ]]; then
       hyprdev-apply-theme "catppuccin" &
       disown
-      current="catppuccin"
     fi
-  elif [[ "$now" -ge $(date -d "08:00" +%s) ]]; then
+  elif [[ "$now" -ge "$(date -d "08:00" +%s)" ]]; then
     if [[ "$current" == "light" ]]; then
       continue
     fi
     hyprdev-apply-theme "light" &
     disown
-    current="light"
   fi
 done
